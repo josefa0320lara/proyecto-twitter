@@ -1,12 +1,14 @@
 class Tweet < ApplicationRecord
   belongs_to :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liking_users, :through => :likes, :source => :user
 
   validates :content, :presence => true
 
   paginates_per 5
 
+  scope :tweets_for_me, -> (user) { where(user_id: user.arr_friends_id_and_me) }
+ 
 
   def is_liked?(user)
     self.liking_users.include?(user)

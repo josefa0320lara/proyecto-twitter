@@ -8,7 +8,18 @@
             <br>
             <b> <%= tweet.user.username%> dice: </b>
             <%= tweet.content %>
+            <br/>
+            <% if user_signed_in? && current_user != tweet.user %>
+                <div>
+                    <% if current_user.is_following?(tweet.user_id) %>
+                        <%= link_to "<i class='fas fa-user-times text-danger'></i>".html_safe, users_follow_path(tweet.user_id), method: :post %>
+                    <% else %>
+                        <%= link_to "<i class='fas fa-user-plus'></i>".html_safe, users_follow_path(tweet.user_id), method: :post %>
+                    <% end %>
+                </div>
+            <% end %>
         </div>
+
         <br/>
         <div class="col-2 p-3">
             <div>
@@ -21,6 +32,7 @@
             </div>
 
             <div>
+            <% if user_signed_in? %>
                 <%= tweet.count_rt %>
                 <% if tweet.count_rt > 0 %>
                     <%= link_to "<i class= 'fas fa-retweet text-primary'></i>".html_safe, tweet_retweet_path(tweet), method: :post%>
@@ -28,6 +40,10 @@
                     <%= link_to "<i class= 'fas fa-retweet text-muted'></i>".html_safe, tweet_retweet_path(tweet), method: :post%>
 
                 <% end%>
+            <% else %>
+                <%= link_to "<i class= 'fas fa-retweet text-muted'></i>".html_safe %>
+
+            <% end %>
 
                 <% if tweet.is_retweet? %>
                     <%= link_to "Retweet...", tweet.tweet_ref %>
