@@ -14,3 +14,74 @@
  *= require_tree .
  *= require_self
  */
+
+.circle {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.icono-twitter {
+  color: #31b1e8;
+  font-size: 1.5em;
+}
+
+.color-twitter {
+  color: #31b1e8;
+  background-color: #31b1e8;
+}
+
+.links-section {
+  list-style-type: none;
+  margin-left: 0em;
+  font-size: 1.25em;
+}
+
+.nav-link {
+  transition-duration: 0.2s;
+}
+
+.first-link:hover {
+  background-color: #abaeff;
+}
+
+.second-link:hover {
+  background-color: #97e3e8;
+}
+.third-link:hover {
+  background-color: #c7ffe7;
+}
+.fourth-link:hover {
+  background-color: #f7c1ff;
+}
+
+.nav-item {
+  margin-bottom: 1.5em;
+}
+
+.btn-tweet {
+  width: 2em;
+}
+
+.btn-special {
+  background-color: #abaeff;
+}
+
+h3 {
+  margin-left: 9em;
+}
+
+.text-area:hover {
+  background-color: white;
+}
+
+.btn-color-twitter {
+  background-color: black;
+}
+.user_data {
+  font-family: "PT Sans", sans-serif;
+}
+
+.profile_pic {
+  height: 6em;
+}

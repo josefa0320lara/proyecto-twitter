@@ -11,12 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field mt-5 mb-2">
-    <b> Quieres decir algo?...</b> <br/>
-    <%= form.text_area :content %>
+  <div class="border mt-2 mb-2">
+    <h5> <%= image_tag (current_user.avatar), :class => "avatar-in-tweet w-40 circle ml-3 mt-2 mr-2" %> What's happening?... </h5>
+    <br/>
+    <%= form.text_area :content, size: '80x3', :class => "text-area ml-2 border-white" %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Guardar", :class => "btn btn-primary" %>
+    <%= form.submit "Guardar", :class => "btn btn-special radio ml-3" %>
   </div>
+
 <% end %>

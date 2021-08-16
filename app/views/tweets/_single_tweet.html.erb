@@ -1,13 +1,13 @@
 <div class="container border p-1 mt-3">
     <div class="row">
-        <div class="col-3">
-            <%= image_tag (tweet.user.avatar), :class => "avatar-in-tweet rounded w-100 h-100" %>
+        <div class="col-2 ml-2 mt-3">
+            <%= image_tag (tweet.user.avatar), :class => "circle" %>
         </div>
         <div class="col-6 p-3">
             <%= link_to "<i class='fa fa-calendar mr-2'></i>".html_safe+time_ago_in_words(tweet.created_at), tweet, class: 'text-dark'%>
             <br>
             <b> <%= tweet.user.username%> dice: </b>
-            <%= tweet.content %>
+            <%= tweet.content.html_safe %>
             <br/>
             <% if user_signed_in? && current_user != tweet.user %>
                 <div>
@@ -46,7 +46,8 @@
             <% end %>
 
                 <% if tweet.is_retweet? %>
-                    <%= link_to "Retweet...", tweet.tweet_ref %>
+                    <br/>
+                    <%= link_to "Link to original tweet", tweet.tweet_ref, :class => "text-dark" %>
                 <% end %>
             </div>
         </div>

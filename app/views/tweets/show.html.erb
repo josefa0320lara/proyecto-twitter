@@ -1,15 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong><%= @tweet.user.username %> dice: </strong>
-  <i><%= @tweet.content %></i>
-</p>
+<div class="container">
+  <div class="row">
+  <%= render "shared/side_section" %>
 
-<h3> Likes (<%= @tweet.likes.count %>)</h3>
+  <div class="col-6">
+    <div>
+      <%= image_tag @tweet.user.avatar, :class => "circle" %>
+      <strong><%= @tweet.user.username %>  </strong>
+      <br/>
+      <%= @tweet.content.html_safe %>
+    </div>
 
-<% @tweet.liking_users.each do |user| %>
-  <%= image_tag( user.avatar , class: "avatar-in-tweet rounded") %>
+    <h5 class="mt-3"> Likes (<%= @tweet.likes.count %>)</h5>
 
-<% end %>
+    <% @tweet.liking_users.each do |user| %>
+      <%= image_tag( user.avatar , class: "circle") %>
 
-<%= link_to 'Back', root_path %>
+    <% end %>
+
+    <br />
+
+    <%= link_to 'Back', root_path,class: "text-info mt-3"  %>
+  </div>
+  </div>
+</div>

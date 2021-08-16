@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   get 'home/index'
+  get 'home/my_profile'
   get 'home/all_tweets', to: 'home#all_tweets', as: 'all_tweets'
   post 'follow/:friend_id', to: 'users#follow', as: 'users_follow'
 

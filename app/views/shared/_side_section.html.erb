@@ -1,0 +1,36 @@
+<div class="col-2 links-section pl-0">
+    <li class="nav-item">
+        <%= link_to "<i class='fas fa-hashtag mr-3'></i>".html_safe+ "Explore", all_tweets_path, class: 'nav-link first-link text-dark w-100 mt-2 rounded-pill'%>
+    </li>
+    <% if user_signed_in? %>
+        <% if current_user.admin %>
+            <li class="nav-item">
+                <%= link_to "<i class='fa fa-id-card mr-3'></i>".html_safe+"Admin", admin_root_path, class: 'nav-link text-dark mt-2 rounded-pill' %>
+            </li>
+        <% end%>
+
+        <li class="nav-item">
+            <%= link_to "<i class='fas fa-home mr-3'></i>".html_safe+ "Home", root_path, class: 'nav-link second-link text-dark w-100 mt-2 rounded-pill'%>
+        </li>
+
+        <li class="nav-item">
+            <%= link_to "<i class='fas fa-user mr-3'></i>".html_safe+ "My Profile", home_my_profile_path, class: 'nav-link third-link text-dark w-100 mt-2 rounded-pill'%>
+        </li>
+
+        <li class="nav-item">
+            <%= link_to "<i class='fas fa-sign-out-alt mr-1'></i>".html_safe+ "Sign out", destroy_user_session_path,class: 'nav-link fourth-link text-dark mt-2 rounded-pill' %>
+        </li>
+
+        <li class="nav-item">
+            <%= link_to "Tweet", root_path, class: 'nav-link color-twitter text-center text-light w-100 mt-2 rounded-pill'%>
+        </li>
+
+        <% else %>
+        <li class="nav-item">
+            <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link second-link text-dark mr-3 rounded-pill' %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Log in', new_user_session_path, class: 'nav-link third-link text-dark mr-3 rounded-pill' %>
+        </li>
+    <% end %>
+</div>

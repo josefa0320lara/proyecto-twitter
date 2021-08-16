@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+    <%= render "shared/side_section" %>
+
+
+    <div class="col-6">
+    <h4>My Profile</h4>
+    <br/>
+    <div class="user_data">
+        <%= image_tag (current_user.avatar), :class => " profile_pic rounded  mt-2 mr-2" %>
+        @<%= current_user.username %>
+        <br/>
+    </div>
+
+    <div class="card text-white bg-secondary mb-3 mt-3" style="max-width: 18rem;">
+        <div class="card-header">Account's info</div>
+        <div class="card-body bg-light">
+              <h6 class="text-info "><%= current_user.tweets_count %> Tweets </h6>
+              <h6 class="text-info "><%= current_user.friend_count %> Following </h6>
+        </div>
+    </div>
+
+
+    <div>
+    <h6 class="mt-4"> My friends list: </h6>
+    <% @users.each do |user| %>
+        <% if current_user.is_following?(user.id)%>
+            <%= image_tag (user.avatar), :class => " w-60 circle ml-1 mt-2 mr-2" %>
+            <%= (user.username) %>
+            <%= link_to "<i class='fas fa-user-times text-danger ml-1 mr-4'></i>".html_safe, users_follow_path(user.id), method: :post %>
+        <% end %>
+    <% end %>
+    </div>
+</div>
