@@ -21,6 +21,12 @@
   width: 50px;
 }
 
+.small-circle {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
 .icono-twitter {
   color: #31b1e8;
   font-size: 1.5em;

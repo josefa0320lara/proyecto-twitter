@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     end
 
     @tweet = Tweet.new
+    @users = User.all
   end
 
   def all_tweets
