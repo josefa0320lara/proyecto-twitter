@@ -45,10 +45,10 @@
 
         <% else %>
         <li class="nav-item">
-            <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link second-link text-dark mr-3 rounded-pill' %>
+            <%= link_to "<i class='fa fa-smile-o mr-2' aria-hidden='true'></i>".html_safe+ "Register", new_user_registration_path, class: 'nav-link second-link text-dark mr-3 rounded-pill' %>
         </li>
         <li class="nav-item">
-            <%= link_to 'Log in', new_user_session_path, class: 'nav-link third-link text-dark mr-3 rounded-pill' %>
+            <%= link_to "<i class='fa fa-sign-in mr-2' aria-hidden='true'></i>".html_safe+"Log in", new_user_session_path, class: 'nav-link third-link text-dark mr-3 rounded-pill' %>
         </li>
     <% end %>
 </div>
