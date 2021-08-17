@@ -9,7 +9,7 @@ class Tweet < ApplicationRecord
 
   validates :content, :presence => true
 
-  paginates_per 50
+  paginates_per 20
 
   scope :tweets_for_me, -> (user) { where(user_id: user.arr_friends_id_and_me) }
 
