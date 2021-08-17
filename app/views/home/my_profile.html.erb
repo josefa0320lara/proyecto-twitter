@@ -22,6 +22,7 @@
 
 
     <div>
+
     <h6 class="mt-4"> My friends list: </h6>
     <% @users.each do |user| %>
         <% if current_user.is_following?(user.id)%>
@@ -31,4 +32,5 @@
         <% end %>
     <% end %>
     </div>
+    
 </div>

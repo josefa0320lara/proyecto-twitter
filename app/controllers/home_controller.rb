@@ -13,7 +13,11 @@ class HomeController < ApplicationController
   def all_tweets
     @tweets = Tweet.order(created_at: :desc).page params[:page]
     @tweet = Tweet.new
-     
+
+    #most_liked_tweets = Tweet.most_liked.keys.reverse
+  
+    #@tweets_liked = most_liked_tweets.map { |tweet_id| Tweet.find(tweet_id) }
+
     render "index"
   end
 

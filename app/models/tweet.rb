@@ -54,4 +54,10 @@ class Tweet < ApplicationRecord
     Tweet.find(self.rt_ref )
   end
 
+  ##def self.most_liked 
+  #  array = Like.all.pluck(:tweet_id)
+  #  hash = array.inject(Hash.new(0)) { |h, x| h[x] += 1; h} 
+   # hash.sort_by { |k, v| v }.last(5).to_h
+  #end
+
 end

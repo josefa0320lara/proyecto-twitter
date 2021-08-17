@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   #get 'api/news'
   scope '/api' do
     get'/news', to: 'api#news', as: 'api_news'
+    get '/:date1/:date2', to: 'api#tweets_by_date', as: 'api_tweets_by_date'
+    post '/tweets', to: 'api#create_tweet', as: 'api_create_tweet'
   end
 
   root to: 'home#index'

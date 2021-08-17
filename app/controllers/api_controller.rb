@@ -1,4 +1,6 @@
 class ApiController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def news
     #render json: Tweet.last(5)
     tweets = Tweet.last(5)
@@ -14,4 +16,36 @@ class ApiController < ApplicationController
       end
       render json: hash
   end
+
+  def tweets_by_date
+    date1= Date.parse(params[:date1])
+    date2= Date.parse(params[:date2])
+
+    render json: Tweet.where(created_at: (date1..date2))
+
+  end
+
+  def create_tweet
+
+    user = User.authenticate(params[:user][:email], params[:user][:password])
+    if user.nil?
+      render json: { error: 'Invalid credentials' }
+      return
+    end
+
+    @tweet = Tweet.new(tweet_params)
+    @tweet.user = user
+    if @tweet.save 
+      render json: @tweet, status: :created
+    else 
+      render json: @tweet.errors, status: :unprocessable_entity
+    end
+  end
+
+
+  private
+  def tweet_params
+    params.require(:tweet).permit(:content, :user_id)
+  end
+
 end
